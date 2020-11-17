@@ -1,21 +1,54 @@
 class Board
-  attr_accessor :cups
+  attr_accessor :cups, :name1, :name2
 
   def initialize(name1, name2)
+    @name1 = name1
+    @name2 = name2
+    @cups = Array.new(14) {[]}
+    self.place_stones
   end
 
   def place_stones
-    # helper method to #initialize every non-store cup with four stones each
+    (0..5).each do |i|
+      4.times { @cups[i] << :stone }
+    end
+    (7..12).each do |i|
+      4.times { @cups[i] << :stone }
+    end
   end
 
   def valid_move?(start_pos)
+    if (0..13).include?(start_pos) == false
+      raise "Invalid starting cup"
+    elsif @cups[start_pos].empty?
+      raise "Starting cup is empty"
+    end
   end
 
   def make_move(start_pos, current_player_name)
+    rocks = @cups[start_pos].length
+    @cups[start_pos] = []
+
+    avoid = current_player_name == name1 ? 13 : 6
+    c_pos = (start_pos + 1) % 14
+    while rocks >= 1
+      if c_pos != avoid
+        @cups[c_pos] << :stone
+        rocks -= 1
+      end
+      c_pos = (c_pos + 1) % 14 if rocks >= 1
+    end
+
+    self.render
+    return next_turn(c_pos, current_player_name)
   end
 
-  def next_turn(ending_cup_idx)
-    # helper method to determine whether #make_move returns :switch, :prompt, or ending_cup_idx
+  require "byebug"
+  def next_turn(ending_cup_idx, current_player_name)
+    player_cup = current_player_name == name1 ? 6 : 13
+    return :prompt if ending_cup_idx == player_cup
+    return :switch if @cups[ending_cup_idx].length == 1 # "If it has one rock, then it was empty before we put the last rock in."
+    return ending_cup_idx if @cups[ending_cup_idx].length > 1
   end
 
   def render
