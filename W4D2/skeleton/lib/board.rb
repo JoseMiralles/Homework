@@ -43,7 +43,6 @@ class Board
     return next_turn(c_pos, current_player_name)
   end
 
-  require "byebug"
   def next_turn(ending_cup_idx, current_player_name)
     player_cup = current_player_name == name1 ? 6 : 13
     return :prompt if ending_cup_idx == player_cup
@@ -60,8 +59,13 @@ class Board
   end
 
   def one_side_empty?
+    return true if @cups[0..5].all? {|c|c.empty?} || @cups[7..12].all? {|c|c.empty?}
+    return false
   end
 
   def winner
+    return :draw if @cups[6].length == @cups[13].length
+    return name1 if @cups[6].length > @cups[13].length
+    return name2
   end
 end
