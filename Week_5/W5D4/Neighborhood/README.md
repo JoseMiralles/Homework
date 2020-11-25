@@ -3,13 +3,13 @@
 
 2. Add Gems as desired
 in Gemfile:
-group :development do
-  # Gotta have byebug...
-  gem 'byebug'
 
-  # pry > irb
+```
+group :development do
+  gem 'byebug'
   gem 'pry-rails'
 end
+```
 
 3. Run "bundle install"
 
@@ -20,11 +20,13 @@ end
 - "rails generate migration createHouse"
 
 6. Define the tables in the migration files, db > migrate
+https://github.com/JoseMiralles/Homework/tree/master/Week_5/W5D4/Neighborhood/db/migrate
 
 7. Apply migrations "rails db:migrate"
 
 8. create models in app > models (person.rb, house.rb)
 - Just create them like any other ruby file.
+https://github.com/JoseMiralles/Homework/tree/master/Week_5/W5D4/Neighborhood/app/models
 
 9. add validation and associations in model files (person.rb, house.rb)
 
