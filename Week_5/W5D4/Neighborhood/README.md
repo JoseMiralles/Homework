@@ -8,6 +8,7 @@ in Gemfile:
 
 ```
 group :development do
+  # I removed the other ones from the instructions because they were wrecking people's computers.
   gem 'byebug'
   gem 'pry-rails'
 end
