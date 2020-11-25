@@ -54,10 +54,10 @@ https://github.com/JoseMiralles/Homework/tree/master/Week_5/W5D4/Neighborhood/ap
 - Look at the files from the previous step.
 
 # TESTING
-## 1. Open console with pry within the rails app context:
+## 1. Open a console with pry within the rails app context:
 
 `Rails c` or `Rails console`
-- This creates a pry session, but the project is already loaded into it.
+- This creates a pry session, but the project is already loaded into it so we have access to the classes and the DB.
 
 Enter the following commands:
 Create a house:
