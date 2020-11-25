@@ -2,16 +2,8 @@
 - Make sure that the db is running.
 
 2. Add Gems as desired
-
+in Gemfile:
 group :development do
-  # Run 'bundle exec annotate' in Terminal to add helpful comments to models.
-  gem 'annotate'
-
-  # These two give you a great error handling page.
-  # But make sure to never use them in production!
-  gem 'better_errors'
-  gem 'binding_of_caller'
-
   # Gotta have byebug...
   gem 'byebug'
 
@@ -28,3 +20,34 @@ end
 - "rails generate migration createHouse"
 
 6. Define the tables in the migration files, db > migrate
+
+7. Apply migrations "rails db:migrate"
+
+8. create models in app > models (person.rb, house.rb)
+- Just create them like any other ruby file.
+
+9. add validation and associations in model files (person.rb, house.rb)
+
+### TESTING
+1. "Rails c" to open console with pry within the rails app context.
+Enter the following commands:
+Create a house:
+- white_house = House.new()
+- white_house.address = "1600 Pennsylvania Avenue NW, Washington, DC 20500"
+- white_house.valid? # should return true.
+- white_house.save # should insert into db
+- House.all # should have the WH in it.
+
+Create some people:
+- person1 = Person.new
+- person1.name = "Joe Biden"
+- person1.house_id = 1
+- person1.valid? # should be true
+- person1.save # should save person1 in the db
+
+- person2 = Person.new({name: "Jill Biden", house_id: 1})
+- person2.save # should add to DB
+
+- Person.all # should list both people in an array.
+- white_house.residents # should also list both people
+- person2.house #should show the address for the white house.
