@@ -21,6 +21,7 @@ end
 
 # 5. Create migrations
 `rails generate migration createPerson`
+
 `rails generate migration createHouse`
 
 # 6. Define the tables in the migration files, db > migrate
