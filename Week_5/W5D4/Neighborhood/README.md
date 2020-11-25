@@ -1,24 +1,30 @@
-# README
+1. Rails new Neighborhood -G --database=postgresql
+- Make sure that the db is running.
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+2. Add Gems as desired
 
-Things you may want to cover:
+group :development do
+  # Run 'bundle exec annotate' in Terminal to add helpful comments to models.
+  gem 'annotate'
 
-* Ruby version
+  # These two give you a great error handling page.
+  # But make sure to never use them in production!
+  gem 'better_errors'
+  gem 'binding_of_caller'
 
-* System dependencies
+  # Gotta have byebug...
+  gem 'byebug'
 
-* Configuration
+  # pry > irb
+  gem 'pry-rails'
+end
 
-* Database creation
+3. Run "bundle install"
 
-* Database initialization
+4. Create db "rails db:create"
 
-* How to run the test suite
+5. Create migrations
+- "rails generate migration createPerson"
+- "rails generate migration createHouse"
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+6. Define the tables in the migration files, db > migrate
