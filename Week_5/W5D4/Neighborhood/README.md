@@ -3,7 +3,7 @@
 
 `Rails new Neighborhood -G --database=postgresql`
 
-## 2. Add Gems as desired
+## 2. Add Gems as needed
 in Gemfile:
 
 ```
@@ -11,6 +11,7 @@ group :development do
   # I removed the other ones from the instructions because they were wrecking people's computers.
   gem 'byebug'
   gem 'pry-rails'
+  gem 'annotate' # optional, adds a chart on top of model files. But remove it if it raises an error when running "bundle exec"
 end
 ```
 
@@ -25,7 +26,7 @@ end
 
 `rails generate migration createHouse`
 
-## 6. Define the tables in the migration files, db > migrate
+## 6. Define the tables in the migration files, db/migrate
 https://github.com/JoseMiralles/Homework/tree/master/Week_5/W5D4/Neighborhood/db/migrate
 
 NOTE: I forgot to create indexes, but this is how they are created in a migration:
@@ -50,6 +51,12 @@ end
 
 - Just create them like any other ruby file:
 https://github.com/JoseMiralles/Homework/tree/master/Week_5/W5D4/Neighborhood/app/models
+#### Optional, annotate:
+If you have the annotate gem installed, you can get schema info in your model file.
+
+`bundle exec annotate --models`
+
+- I'm not 100% sure how this works tbh.
 
 ## 9. add validation and associations in model files (person.rb, house.rb)
 - Look at the files from the previous step.
