@@ -6,4 +6,9 @@ class Toy < ApplicationRecord
         class_name: :Dog
     })
 
+    belongs_to(:house, {
+        trough: :dog,
+        source: house
+    })
+
 end
