@@ -1,9 +1,9 @@
-# 1. Create the project with a psql database
+## 1. Create the project with a psql database
 - Make sure that psql is running, and then run:
 
 `Rails new Neighborhood -G --database=postgresql`
 
-# 2. Add Gems as desired
+## 2. Add Gems as desired
 in Gemfile:
 
 ```
@@ -13,18 +13,18 @@ group :development do
 end
 ```
 
-# 3. Run bundle install
+## 3. Run bundle install
 `bundle install`
 
-# 4. Create database
+## 4. Create database
 `rails db:create`
 
-# 5. Create migrations
+## 5. Create migrations
 `rails generate migration createPerson`
 
 `rails generate migration createHouse`
 
-# 6. Define the tables in the migration files, db > migrate
+## 6. Define the tables in the migration files, db > migrate
 https://github.com/JoseMiralles/Homework/tree/master/Week_5/W5D4/Neighborhood/db/migrate
 
 NOTE: I forgot to create indexes, but this is how they are created in a migration:
@@ -34,26 +34,27 @@ class CreatePerson...
   def change
   ...
     add_index :people, :id # Adds "index" to the id column in the "people" table.
+    add_index :locations, :place, unique: true # Adds index to the place column in the locations table.
   ...
   end
 end
 ```
 
-# 7. Apply migrations
+## 7. Apply migrations
 - This creates empty tables in the database.
 
 `rails db:migrate`
 
-# 8. create models in app/models (ex: person.rb, house.rb)
+## 8. create models in app/models (ex: person.rb, house.rb)
 
 - Just create them like any other ruby file:
 https://github.com/JoseMiralles/Homework/tree/master/Week_5/W5D4/Neighborhood/app/models
 
-# 9. add validation and associations in model files (person.rb, house.rb)
+## 9. add validation and associations in model files (person.rb, house.rb)
 - Look at the files from the previous step.
 
-### TESTING
-# 1. Open console with pry within the rails app context:
+# TESTING
+## 1. Open console with pry within the rails app context:
 
 `Rails c` or `Rails console`
 
