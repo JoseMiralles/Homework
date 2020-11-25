@@ -88,3 +88,26 @@ Create some people:
 - `Person.all` # should list both people in an array.
 - `white_house.residents` # should also list both people
 - `person2.house` #should show the address for the white house.
+
+# Using seeds.rb instead
+- This makes it easier to populate the database.
+## 1. Create objects in the seed.rb file:
+
+```
+# Destroy all of the data in the Post, User, and Location tables.
+Post.destroy_all
+User.destroy_all
+Location.destroy_all
+
+loc_1 = Location.create!({place: Sydney})
+loc_2 = Location.create!({place: New York})
+
+user_1 = User.create!({username: "Andy", location_id: loc_1.id})
+user_2 = User.create!({username: "Josh", location_id: loc_2.id})
+
+Post.create!({body: "I hate mornings", author_id: user_1.id})
+```
+
+## 2. Aplly the seed to the db:
+
+`Bundle exec rails db:seed`
