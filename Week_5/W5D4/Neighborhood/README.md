@@ -17,7 +17,7 @@ end
 `bundle install`
 
 # 4. Create database
-"rails db:create"
+`rails db:create`
 
 # 5. Create migrations
 `rails generate migration createPerson`
@@ -25,6 +25,18 @@ end
 
 # 6. Define the tables in the migration files, db > migrate
 https://github.com/JoseMiralles/Homework/tree/master/Week_5/W5D4/Neighborhood/db/migrate
+
+NOTE: I forgot to create indexes, but this is how they are created in a migration:
+
+```
+class CreatePerson...
+  def change
+  ...
+    add_index :people, :id # Adds "index" to the id column in the "people" table.
+  ...
+  end
+end
+```
 
 # 7. Apply migrations
 - This creates empty tables in the database.
