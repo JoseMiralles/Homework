@@ -10,6 +10,7 @@ class House < ApplicationRecord
 
   def n_plus_one_seeds
     plants = self.plants
+    
     seeds = []
     plants.each do |plant|
       seeds << plant.seeds
