@@ -1,10 +1,13 @@
+/*
+*   Command: cat import_db.sql | sqlite3 plays.db
+*/
+
 CREATE TABLE plays (
     id INTEGER PRIMARY KEY,
     title TEXT NOT NULL,
     year INTEGER NOT NULL,
+    playwright_id INTEGER NOT NULL,
 
-    /* Connect plays to playwrights */
-    playwright_id INTEGER NOT NULL
     FOREIGN KEY (playwright_id) REFERENCES playwrights(id)
 );
 
@@ -24,6 +27,5 @@ VALUES
 INSERT INTO
     plays (title, year, playwright_id)
 VALUES
-    ('All My Sons', 1947, (SELECT id FROM playwrights WHERE name = 'Arthur Miller'))
+    ('All My Sons', 1947, (SELECT id FROM playwrights WHERE name = 'Arthur Miller')),
     ('Long Day''s Journey Into Night', 1956, (SELECT id FROM playwrights WHERE name = 'Eugene O''Neil'));
-    
