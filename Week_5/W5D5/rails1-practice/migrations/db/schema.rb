@@ -10,10 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_28_160222) do
+ActiveRecord::Schema.define(version: 2020_11_30_004332) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "comments", force: :cascade do |t|
+    t.string "body", null: false
+    t.integer "video_id", null: false
+    t.integer "commenter_id", null: false
+    t.integer "parent_comment_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["commenter_id"], name: "index_comments_on_commenter_id"
+    t.index ["parent_comment_id"], name: "index_comments_on_parent_comment_id"
+    t.index ["video_id"], name: "index_comments_on_video_id"
+  end
 
   create_table "likes", force: :cascade do |t|
     t.integer "liker_id", null: false
@@ -25,19 +37,19 @@ ActiveRecord::Schema.define(version: 2020_02_28_160222) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string "email", null: false
+    t.string "username", null: false
     t.string "password", null: false
-    t.text "bio"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "videos", force: :cascade do |t|
-    t.string "name", null: false
+    t.string "title", null: false
     t.text "description", null: false
     t.integer "uploader_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["uploader_id"], name: "index_videos_on_uploader_id"
   end
 
 end

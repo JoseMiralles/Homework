@@ -88,3 +88,350 @@
   ↳ bin/rails:9
   [1m[35m (5.1ms)[0m  [1m[35mCOMMIT[0m
   ↳ bin/rails:9
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT pg_try_advisory_lock(7734563615695547820)[0m
+  ↳ bin/rails:9
+  [1m[35m (13.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+Migrating to CreateComments (20201130003021)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:9
+  [1m[35m (58.1ms)[0m  [1m[35mCREATE TABLE "comments" ("id" bigserial primary key, "body" text NOT NULL, "video_id" integer NOT NULL, "commenter_id" integer NOT NULL, "parent_comment_id" integer, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/migrate/20201130003021_create_comments.rb:3
+  [1m[35m (2.9ms)[0m  [1m[35mCREATE  INDEX  "index_comments_on_video_id" ON "comments"  ("video_id")[0m
+  ↳ db/migrate/20201130003021_create_comments.rb:12
+  [1m[35m (2.9ms)[0m  [1m[35mCREATE  INDEX  "index_comments_on_commenter_id" ON "comments"  ("commenter_id")[0m
+  ↳ db/migrate/20201130003021_create_comments.rb:13
+  [1m[35m (3.0ms)[0m  [1m[35mCREATE  INDEX  "index_comments_on_parent_comment_id" ON "comments"  ("parent_comment_id")[0m
+  ↳ db/migrate/20201130003021_create_comments.rb:14
+  [1m[36mActiveRecord::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20201130003021"]]
+  ↳ bin/rails:9
+  [1m[35m (6.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:9
+Migrating to FixUsersAndVideos (20201130004332)
+  [1m[35m (0.6ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:9
+  [1m[35m (0.8ms)[0m  [1m[35mALTER TABLE "users" RENAME COLUMN "email" TO "username"[0m
+  ↳ db/migrate/20201130004332_fix_users_and_videos.rb:3
+  [1m[35m (1.4ms)[0m  [1m[35mALTER TABLE "users" DROP COLUMN "bio"[0m
+  ↳ db/migrate/20201130004332_fix_users_and_videos.rb:4
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "videos" RENAME COLUMN "name" TO "title"[0m
+  ↳ db/migrate/20201130004332_fix_users_and_videos.rb:6
+  [1m[35m (2.9ms)[0m  [1m[35mCREATE  INDEX  "index_videos_on_uploader_id" ON "videos"  ("uploader_id")[0m
+  ↳ db/migrate/20201130004332_fix_users_and_videos.rb:7
+  [1m[36mActiveRecord::SchemaMigration Create (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20201130004332"]]
+  ↳ bin/rails:9
+  [1m[35m (5.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:9
+  [1m[36mActiveRecord::InternalMetadata Load (12.3ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(7734563615695547820)[0m
+  ↳ bin/rails:9
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (11.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(7734563615695547820)[0m
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+Migrating to FixUsersAndVideos (20201130004332)
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  ↳ bin/rails:9
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(7734563615695547820)[0m
+  ↳ bin/rails:9
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  ↳ bin/rails:9
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  ↳ bin/rails:9
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  ↳ bin/rails:9
+  [1m[35m (488.0ms)[0m  [1m[35mDROP DATABASE IF EXISTS "rails-1P-migrations_development"[0m
+  ↳ bin/rails:9
+  [1m[35m (430.1ms)[0m  [1m[35mDROP DATABASE IF EXISTS "rails-1P-migrations_test"[0m
+  ↳ bin/rails:9
+  [1m[35m (1832.2ms)[0m  [1m[35mCREATE DATABASE "rails-1P-migrations_development" ENCODING = 'unicode'[0m
+  ↳ bin/rails:9
+  [1m[35m (1526.8ms)[0m  [1m[35mCREATE DATABASE "rails-1P-migrations_test" ENCODING = 'unicode'[0m
+  ↳ bin/rails:9
+  [1m[35mSQL (0.7ms)[0m  [1m[35mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  ↳ db/schema.rb:16
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "comments" CASCADE[0m
+  ↳ db/schema.rb:18
+  [1m[35m (19.8ms)[0m  [1m[35mCREATE TABLE "comments" ("id" bigserial primary key, "body" text NOT NULL, "video_id" integer NOT NULL, "commenter_id" integer NOT NULL, "parent_comment_id" integer, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/schema.rb:18
+  [1m[35m (8.8ms)[0m  [1m[35mCREATE  INDEX  "index_comments_on_commenter_id" ON "comments"  ("commenter_id")[0m
+  ↳ db/schema.rb:18
+  [1m[35m (7.5ms)[0m  [1m[35mCREATE  INDEX  "index_comments_on_parent_comment_id" ON "comments"  ("parent_comment_id")[0m
+  ↳ db/schema.rb:18
+  [1m[35m (7.2ms)[0m  [1m[35mCREATE  INDEX  "index_comments_on_video_id" ON "comments"  ("video_id")[0m
+  ↳ db/schema.rb:18
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "likes" CASCADE[0m
+  ↳ db/schema.rb:30
+  [1m[35m (9.6ms)[0m  [1m[35mCREATE TABLE "likes" ("id" bigserial primary key, "liker_id" integer NOT NULL, "video_id" integer NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/schema.rb:30
+  [1m[35m (8.6ms)[0m  [1m[35mCREATE  INDEX  "index_likes_on_liker_id" ON "likes"  ("liker_id")[0m
+  ↳ db/schema.rb:30
+  [1m[35m (8.1ms)[0m  [1m[35mCREATE  INDEX  "index_likes_on_video_id" ON "likes"  ("video_id")[0m
+  ↳ db/schema.rb:30
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "users" CASCADE[0m
+  ↳ db/schema.rb:39
+  [1m[35m (13.6ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "username" character varying NOT NULL, "password" character varying NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/schema.rb:39
+  [1m[35m (0.6ms)[0m  [1m[35mDROP TABLE IF EXISTS "videos" CASCADE[0m
+  ↳ db/schema.rb:46
+  [1m[35m (14.5ms)[0m  [1m[35mCREATE TABLE "videos" ("id" bigserial primary key, "title" character varying NOT NULL, "description" text NOT NULL, "uploader_id" integer NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/schema.rb:46
+  [1m[35m (8.6ms)[0m  [1m[35mCREATE  INDEX  "index_videos_on_uploader_id" ON "videos"  ("uploader_id")[0m
+  ↳ db/schema.rb:46
+  [1m[35m (12.6ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  ↳ db/schema.rb:13
+  [1m[35m (6.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ db/schema.rb:13
+  [1m[35m (6.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20201130004332)[0m
+  ↳ db/schema.rb:13
+  [1m[35m (6.0ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20201130003021);
+
+[0m
+  ↳ db/schema.rb:13
+  [1m[35m (13.8ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/schema.rb:13
+  [1m[36mActiveRecord::InternalMetadata Load (5.7ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ db/schema.rb:13
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/schema.rb:13
+  [1m[36mActiveRecord::InternalMetadata Create (0.6ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2020-11-30 00:59:26.227464"], ["updated_at", "2020-11-30 00:59:26.227464"]]
+  ↳ db/schema.rb:13
+  [1m[35m (5.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/schema.rb:13
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:9
+  [1m[35mSQL (0.6ms)[0m  [1m[35mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  ↳ db/schema.rb:16
+  [1m[35m (0.4ms)[0m  [1m[35mDROP TABLE IF EXISTS "comments" CASCADE[0m
+  ↳ db/schema.rb:18
+  [1m[35m (18.0ms)[0m  [1m[35mCREATE TABLE "comments" ("id" bigserial primary key, "body" text NOT NULL, "video_id" integer NOT NULL, "commenter_id" integer NOT NULL, "parent_comment_id" integer, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/schema.rb:18
+  [1m[35m (8.9ms)[0m  [1m[35mCREATE  INDEX  "index_comments_on_commenter_id" ON "comments"  ("commenter_id")[0m
+  ↳ db/schema.rb:18
+  [1m[35m (7.7ms)[0m  [1m[35mCREATE  INDEX  "index_comments_on_parent_comment_id" ON "comments"  ("parent_comment_id")[0m
+  ↳ db/schema.rb:18
+  [1m[35m (8.1ms)[0m  [1m[35mCREATE  INDEX  "index_comments_on_video_id" ON "comments"  ("video_id")[0m
+  ↳ db/schema.rb:18
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "likes" CASCADE[0m
+  ↳ db/schema.rb:30
+  [1m[35m (10.3ms)[0m  [1m[35mCREATE TABLE "likes" ("id" bigserial primary key, "liker_id" integer NOT NULL, "video_id" integer NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/schema.rb:30
+  [1m[35m (8.6ms)[0m  [1m[35mCREATE  INDEX  "index_likes_on_liker_id" ON "likes"  ("liker_id")[0m
+  ↳ db/schema.rb:30
+  [1m[35m (8.6ms)[0m  [1m[35mCREATE  INDEX  "index_likes_on_video_id" ON "likes"  ("video_id")[0m
+  ↳ db/schema.rb:30
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "users" CASCADE[0m
+  ↳ db/schema.rb:39
+  [1m[35m (12.2ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "username" character varying NOT NULL, "password" character varying NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/schema.rb:39
+  [1m[35m (0.9ms)[0m  [1m[35mDROP TABLE IF EXISTS "videos" CASCADE[0m
+  ↳ db/schema.rb:46
+  [1m[35m (14.3ms)[0m  [1m[35mCREATE TABLE "videos" ("id" bigserial primary key, "title" character varying NOT NULL, "description" text NOT NULL, "uploader_id" integer NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/schema.rb:46
+  [1m[35m (8.9ms)[0m  [1m[35mCREATE  INDEX  "index_videos_on_uploader_id" ON "videos"  ("uploader_id")[0m
+  ↳ db/schema.rb:46
+  [1m[35m (14.3ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  ↳ db/schema.rb:13
+  [1m[35m (6.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ db/schema.rb:13
+  [1m[35m (6.7ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20201130004332)[0m
+  ↳ db/schema.rb:13
+  [1m[35m (6.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20201130003021);
+
+[0m
+  ↳ db/schema.rb:13
+  [1m[35m (16.0ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/schema.rb:13
+  [1m[36mActiveRecord::InternalMetadata Load (6.1ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ db/schema.rb:13
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/schema.rb:13
+  [1m[36mActiveRecord::InternalMetadata Create (0.6ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2020-11-30 00:59:26.481475"], ["updated_at", "2020-11-30 00:59:26.481475"]]
+  ↳ db/schema.rb:13
+  [1m[35m (4.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/schema.rb:13
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:9
+  [1m[36mActiveRecord::InternalMetadata Update (0.3ms)[0m  [1m[33mUPDATE "ar_internal_metadata" SET "value" = $1, "updated_at" = $2 WHERE "ar_internal_metadata"."key" = $3[0m  [["value", "test"], ["updated_at", "2020-11-30 00:59:26.489817"], ["key", "environment"]]
+  ↳ bin/rails:9
+  [1m[35m (6.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:9
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT pg_try_advisory_lock(7734563615695547820)[0m
+  ↳ bin/rails:9
+  [1m[35m (6.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[36mActiveRecord::InternalMetadata Load (6.3ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ bin/rails:9
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:9
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:9
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(7734563615695547820)[0m
+  ↳ bin/rails:9
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  ↳ bin/rails:9
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  ↳ bin/rails:9
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  ↳ bin/rails:9
+  [1m[35m (496.3ms)[0m  [1m[35mDROP DATABASE IF EXISTS "rails-1P-migrations_development"[0m
+  ↳ bin/rails:9
+  [1m[35m (426.7ms)[0m  [1m[35mDROP DATABASE IF EXISTS "rails-1P-migrations_test"[0m
+  ↳ bin/rails:9
+  [1m[35m (1691.9ms)[0m  [1m[35mCREATE DATABASE "rails-1P-migrations_development" ENCODING = 'unicode'[0m
+  ↳ bin/rails:9
+  [1m[35m (1688.5ms)[0m  [1m[35mCREATE DATABASE "rails-1P-migrations_test" ENCODING = 'unicode'[0m
+  ↳ bin/rails:9
+  [1m[35mSQL (0.7ms)[0m  [1m[35mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  ↳ db/schema.rb:16
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE IF EXISTS "comments" CASCADE[0m
+  ↳ db/schema.rb:18
+  [1m[35m (21.1ms)[0m  [1m[35mCREATE TABLE "comments" ("id" bigserial primary key, "body" character varying NOT NULL, "video_id" integer NOT NULL, "commenter_id" integer NOT NULL, "parent_comment_id" integer, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/schema.rb:18
+  [1m[35m (9.2ms)[0m  [1m[35mCREATE  INDEX  "index_comments_on_commenter_id" ON "comments"  ("commenter_id")[0m
+  ↳ db/schema.rb:18
+  [1m[35m (8.1ms)[0m  [1m[35mCREATE  INDEX  "index_comments_on_parent_comment_id" ON "comments"  ("parent_comment_id")[0m
+  ↳ db/schema.rb:18
+  [1m[35m (8.5ms)[0m  [1m[35mCREATE  INDEX  "index_comments_on_video_id" ON "comments"  ("video_id")[0m
+  ↳ db/schema.rb:18
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE IF EXISTS "likes" CASCADE[0m
+  ↳ db/schema.rb:30
+  [1m[35m (12.0ms)[0m  [1m[35mCREATE TABLE "likes" ("id" bigserial primary key, "liker_id" integer NOT NULL, "video_id" integer NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/schema.rb:30
+  [1m[35m (10.0ms)[0m  [1m[35mCREATE  INDEX  "index_likes_on_liker_id" ON "likes"  ("liker_id")[0m
+  ↳ db/schema.rb:30
+  [1m[35m (9.1ms)[0m  [1m[35mCREATE  INDEX  "index_likes_on_video_id" ON "likes"  ("video_id")[0m
+  ↳ db/schema.rb:30
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE IF EXISTS "users" CASCADE[0m
+  ↳ db/schema.rb:39
+  [1m[35m (14.8ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "username" character varying NOT NULL, "password" character varying NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/schema.rb:39
+  [1m[35m (0.8ms)[0m  [1m[35mDROP TABLE IF EXISTS "videos" CASCADE[0m
+  ↳ db/schema.rb:46
+  [1m[35m (14.5ms)[0m  [1m[35mCREATE TABLE "videos" ("id" bigserial primary key, "title" character varying NOT NULL, "description" text NOT NULL, "uploader_id" integer NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/schema.rb:46
+  [1m[35m (9.0ms)[0m  [1m[35mCREATE  INDEX  "index_videos_on_uploader_id" ON "videos"  ("uploader_id")[0m
+  ↳ db/schema.rb:46
+  [1m[35m (12.6ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  ↳ db/schema.rb:13
+  [1m[35m (6.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ db/schema.rb:13
+  [1m[35m (6.0ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20201130004332)[0m
+  ↳ db/schema.rb:13
+  [1m[35m (5.7ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20201130003021);
+
+[0m
+  ↳ db/schema.rb:13
+  [1m[35m (12.2ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/schema.rb:13
+  [1m[36mActiveRecord::InternalMetadata Load (5.5ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ db/schema.rb:13
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/schema.rb:13
+  [1m[36mActiveRecord::InternalMetadata Create (0.6ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2020-11-30 01:02:19.434256"], ["updated_at", "2020-11-30 01:02:19.434256"]]
+  ↳ db/schema.rb:13
+  [1m[35m (5.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/schema.rb:13
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:9
+  [1m[35mSQL (0.7ms)[0m  [1m[35mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  ↳ db/schema.rb:16
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE IF EXISTS "comments" CASCADE[0m
+  ↳ db/schema.rb:18
+  [1m[35m (18.1ms)[0m  [1m[35mCREATE TABLE "comments" ("id" bigserial primary key, "body" character varying NOT NULL, "video_id" integer NOT NULL, "commenter_id" integer NOT NULL, "parent_comment_id" integer, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/schema.rb:18
+  [1m[35m (7.9ms)[0m  [1m[35mCREATE  INDEX  "index_comments_on_commenter_id" ON "comments"  ("commenter_id")[0m
+  ↳ db/schema.rb:18
+  [1m[35m (7.7ms)[0m  [1m[35mCREATE  INDEX  "index_comments_on_parent_comment_id" ON "comments"  ("parent_comment_id")[0m
+  ↳ db/schema.rb:18
+  [1m[35m (7.4ms)[0m  [1m[35mCREATE  INDEX  "index_comments_on_video_id" ON "comments"  ("video_id")[0m
+  ↳ db/schema.rb:18
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "likes" CASCADE[0m
+  ↳ db/schema.rb:30
+  [1m[35m (9.3ms)[0m  [1m[35mCREATE TABLE "likes" ("id" bigserial primary key, "liker_id" integer NOT NULL, "video_id" integer NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/schema.rb:30
+  [1m[35m (7.4ms)[0m  [1m[35mCREATE  INDEX  "index_likes_on_liker_id" ON "likes"  ("liker_id")[0m
+  ↳ db/schema.rb:30
+  [1m[35m (7.3ms)[0m  [1m[35mCREATE  INDEX  "index_likes_on_video_id" ON "likes"  ("video_id")[0m
+  ↳ db/schema.rb:30
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "users" CASCADE[0m
+  ↳ db/schema.rb:39
+  [1m[35m (14.5ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "username" character varying NOT NULL, "password" character varying NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/schema.rb:39
+  [1m[35m (0.6ms)[0m  [1m[35mDROP TABLE IF EXISTS "videos" CASCADE[0m
+  ↳ db/schema.rb:46
+  [1m[35m (14.9ms)[0m  [1m[35mCREATE TABLE "videos" ("id" bigserial primary key, "title" character varying NOT NULL, "description" text NOT NULL, "uploader_id" integer NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/schema.rb:46
+  [1m[35m (8.1ms)[0m  [1m[35mCREATE  INDEX  "index_videos_on_uploader_id" ON "videos"  ("uploader_id")[0m
+  ↳ db/schema.rb:46
+  [1m[35m (13.7ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  ↳ db/schema.rb:13
+  [1m[35m (6.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ db/schema.rb:13
+  [1m[35m (6.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20201130004332)[0m
+  ↳ db/schema.rb:13
+  [1m[35m (5.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20201130003021);
+
+[0m
+  ↳ db/schema.rb:13
+  [1m[35m (11.4ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/schema.rb:13
+  [1m[36mActiveRecord::InternalMetadata Load (5.4ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ db/schema.rb:13
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/schema.rb:13
+  [1m[36mActiveRecord::InternalMetadata Create (0.5ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2020-11-30 01:02:19.657281"], ["updated_at", "2020-11-30 01:02:19.657281"]]
+  ↳ db/schema.rb:13
+  [1m[35m (5.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/schema.rb:13
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:9
+  [1m[36mActiveRecord::InternalMetadata Update (0.2ms)[0m  [1m[33mUPDATE "ar_internal_metadata" SET "value" = $1, "updated_at" = $2 WHERE "ar_internal_metadata"."key" = $3[0m  [["value", "test"], ["updated_at", "2020-11-30 01:02:19.665796"], ["key", "environment"]]
+  ↳ bin/rails:9
+  [1m[35m (5.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:9
