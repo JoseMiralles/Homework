@@ -38,3 +38,12 @@
 | `video_id`         | integer   | not null, indexed, foreign key |
 | `created_at`       | datetime  | not null                       |
 | `updated_at`       | datetime  | not null                       |
+
+Changes:
+users.email -> users.username
+users.bio -> x
+
+videos.name -> videos.title
+index: videos.uploader_id
+
+CREATE COMMENTS

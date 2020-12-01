@@ -26,21 +26,24 @@
 
 def lowest_score
   # Find the id and title of movies with a scores lower than 2
-
-  
-
+  Movie.select(:id, :title).where("score < 2")
 end
 
 def wesley_movies
   # Find the id, title, and score of all the movies the actor "Wesley Snipes"
   # was in.
-
+  Movie.select(:id, :title, :score)
+  .joins(:actors)
+  .where("actors.name = 'Wesley Snipes'")
 end
 
 def meg_movies
   # Find the id, title, and year of movies Meg Ryan has acted in.
   # Order them in ascending order by year.
-
+  Movie.select(:id, :title, :yr)
+  .joins(:actors)
+  .where("actors.name = 'Meg Ryan'")
+  .order(:yr)
 end
 
 def susan_supporting_roles
@@ -49,11 +52,18 @@ def susan_supporting_roles
 
   # Reminder: In the castings table the lead actor for a movie will
   # have an ord = 1 
-
+  Movie.select(:id, :title)
+  .joins(:actors)
+  .where("actors.name = 'Susan Sarandon'")
+  .where("castings.ord != 1")
 end
 
 def biggest_cast
   # Find the id and title of the 3 movies with the
   # largest casts (i.e most actors)
-
+  Movie.select(:id, :title)
+  .joins(:castings)
+  .group("movies.id")
+  .order("COUNT(castings.actor_id) DESC")
+  .limit(3)
 end
