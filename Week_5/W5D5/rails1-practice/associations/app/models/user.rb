@@ -11,6 +11,28 @@
 
 class User < ApplicationRecord
 
+    has_many :videos,
+    class_name: :Video,
+    foreign_key: :uploader_id
 
+    has_many :comments,
+    class_name: :Comment,
+    foreign_key: :commenter_id
+
+    has_many :likes,
+    class_name: :Like,
+    foreign_key: :liker_id
+
+    has_many :liked_videos,
+    through: :likes,
+    source: :video
+
+    has_many :videos_commented,
+    through: :comments,
+    source: :video
+
+    has_many :likers,
+    through: :videos,
+    source: :likers
   
 end
