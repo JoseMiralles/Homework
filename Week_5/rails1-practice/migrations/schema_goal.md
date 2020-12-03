@@ -46,4 +46,7 @@ users.bio -> x
 videos.name -> videos.title
 index: videos.uploader_id
 
+index: comments.commenter_id
+comments.timestamps
+
 CREATE COMMENTS
