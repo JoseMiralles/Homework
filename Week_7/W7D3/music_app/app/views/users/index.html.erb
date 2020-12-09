@@ -1,0 +1,10 @@
+<table>
+    <tr>
+        <th>email</th>
+    </tr>
+    <% @users.each do |user| %>
+        <tr>
+            <td><a href="#"> <%= user.email %></a></td>
+        </tr>
+    <% end %>
+<table>
