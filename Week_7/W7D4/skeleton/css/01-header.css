@@ -11,6 +11,7 @@ body {
 .header {
   background-color: #f00;
   border-bottom: 1px #ccc solid;
+  color: white
 }
 
 .header a {

@@ -1,25 +1,32 @@
 /* PHASE 4: Footer */
 
 .footer {
-
+    max-width: 900px;
+    margin: auto;
+    border: solid #ccc 1px;
+    background-color: white;
+    color: #ccc;
+    font-weight: 700;
 }
 
 .footer-copy {
-
+    float: left;
+    padding: 1rem;
 }
 
 .footer-links {
-
+    float: right;
 }
 
 .footer-links > li {
-
+    float: left;
 }
 
 .footer a {
-
+    display: block;
+    padding: 1rem;
 }
 
 .footer a:hover {
-
+    background-color: red;
 }
