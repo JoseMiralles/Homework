@@ -22,6 +22,6 @@ body {
 }
 
 .header-nav {
-  width: 900px;
+  max-width: 900px;
   margin: auto;
 }
