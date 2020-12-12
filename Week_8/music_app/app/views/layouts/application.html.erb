@@ -10,6 +10,22 @@
   </head>
 
   <body>
+
+    <header>
+
+      <% if flash[:errors] != nil %>
+        <% flash[:errors].each do |e| %>
+          <p><%= e %></p>
+        <% end %>
+      <% end %>
+
+      <% if signed_in? %>
+        <form action="<%=  %>"></form>
+      <% end %>
+
+    </header>
+
     <%= yield %>
+
   </body>
 </html>
