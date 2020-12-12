@@ -5,11 +5,11 @@ class UsersController < ApplicationController
   end
 
   def show
-    if signed_in?
-      @user = User.find_by(id: session[:id])
+    @user = User.find_by(id: session[:id])
+    if @user
       render :show
     else
-      redirect_to new_session_url
+      redirect_to new_sessions_url
     end
   end
 

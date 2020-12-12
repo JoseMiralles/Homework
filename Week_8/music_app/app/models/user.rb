@@ -13,9 +13,8 @@ class User < ApplicationRecord
         user = self.find_by(email: email)
         if user && user.is_password?(password)
             return user
-        else
-            return nil
         end
+        return nil
     end
 
     

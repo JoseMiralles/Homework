@@ -13,14 +13,24 @@
 
     <header>
 
+      <% if signed_in? %>
+        <form action="<%= sessions_url %>" method="POST">
+          <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>" >
+          <input type="hidden" name="_method" value="DELETE">
+          <button>Sign Out</button>
+        </form>
+      <% else %>
+        <a href="<%= new_sessions_url %>">Sign In</a>
+        |
+        <a href="<%= new_user_url %>">Sign Up</a>
+      <% end %>
+
+      <hr>
+
       <% if flash[:errors] != nil %>
         <% flash[:errors].each do |e| %>
           <p><%= e %></p>
         <% end %>
-      <% end %>
-
-      <% if signed_in? %>
-        <form action="<%=  %>"></form>
       <% end %>
 
     </header>
