@@ -22,7 +22,7 @@ function mysteryScoping3() {
         x = 'in block';
         console.log(x);
     }
-    console.log(x);
+    console.log(x);se
 }
 
 function mysteryScoping4() {

@@ -65,6 +65,35 @@ let sumOfNPrimes = (num) => {
 
     return result;
 }
-console.log(sumOfNPrimes(0))
-console.log(sumOfNPrimes(1))
-console.log(sumOfNPrimes(4))
+// console.log(sumOfNPrimes(0))
+// console.log(sumOfNPrimes(1))
+// console.log(sumOfNPrimes(4))
+
+function Animal(name, breed) {
+    this.name = name;
+    this.breed = breed;
+
+    this.speak = function(){console.log(`Hi, my name is ${this.name} and my breed is ${this.breed}.`)};
+}
+
+/* INHERITANCE */
+function Dog(name, breed) {
+    Animal.call(this, name, breed)
+    this.functionScoped = "Scoped within a function".
+
+    this.bark = function() { console.log("Woof!") }
+}
+
+const dog = new Dog("Odie", "cartoon");
+dog.speak();
+dog.bark();
+
+const halv = function(x){
+    return x/2
+}
+
+console.log(
+    [1,2,3,4].map((x) => {
+         return halv(x * 2) 
+        })
+);

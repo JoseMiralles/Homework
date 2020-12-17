@@ -1,3 +1,5 @@
+/* PROTOTYPES */
+
 function NBAPlayer (name, team, pos) {
     this.name = name;
     this.team = team;
@@ -11,3 +13,17 @@ NBAPlayer.prototype.dunk = function() {
 }
 
 curry.dunk(); /* Curry just dunked! */
+
+
+/* CALLBACKS */
+
+let milliseconds = 2000
+let myCallBack = () => {
+    console.log(`It has been ${milliseconds} milliseconds.`)
+}
+
+global.setTimeout(myCallBack, milliseconds);
+
+global.setTimeout(() => {
+    console.log(`It has been ${milliseconds} milliseconds.`)
+}, milliseconds)
