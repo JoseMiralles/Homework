@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <style>
+        body,
+        .gif-index {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+    </style>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="./index.js"></script>
+    <title>AJAX First Steps</title>
+</head>
+
+<body>
+    <h1>AJAX GIF Search</h1>
+    <form class="gif-search-form">
+        <input type="text" class="gif-search-input">
+        <input type="submit" value="Search for GIF">
+    </form>
+
+    <h3>Found GIFs</h3>
+    <ul class="gif-index"></ul>
+</body>
+
+</html>
