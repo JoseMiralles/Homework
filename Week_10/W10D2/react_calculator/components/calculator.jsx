@@ -17,20 +17,21 @@ export default class Calcualtor extends React.Component{
     }
 
     render(){
+        const { handleChange, state, doMaths, resetCalc } = this;
         return(
             <div>
-                <input onChange={this.handleChange} value={this.state.num1} type="text" name="num1"/>
+                <input onChange={handleChange} value={state.num1} type="text" name="num1"/>
                 <br/><br/>
-                <input onChange={this.handleChange} value={this.state.num2} type="text" name="num2"/>
+                <input onChange={handleChange} value={state.num2} type="text" name="num2"/>
                 <br/><br/>
-                <button onClick={this.doMaths}>+</button>
-                <button onClick={this.doMaths}>/</button>
-                <button onClick={this.doMaths}>*</button>
-                <button onClick={this.doMaths}>-</button>
+                <button onClick={doMaths}>+</button>
+                <button onClick={doMaths}>/</button>
+                <button onClick={doMaths}>*</button>
+                <button onClick={doMaths}>-</button>
                 <br/><br/>
-                <h1>{ this.state.result }</h1>
+                <h1>{ state.result }</h1>
                 <br/>
-                <button onClick={this.resetCalc}>Clear / Reset</button>
+                <button onClick={resetCalc}>Clear / Reset</button>
             </div>
         );
     }
