@@ -57,6 +57,7 @@ var Calcualtor = /*#__PURE__*/function (_React$Component) {
     }; // bind functions
 
     _this.handleChange = _this.handleChange.bind(_assertThisInitialized(_this));
+    _this.doMaths = _this.doMaths.bind(_assertThisInitialized(_this));
     return _this;
   }
 
@@ -65,18 +66,48 @@ var Calcualtor = /*#__PURE__*/function (_React$Component) {
     value: function render() {
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
         onChange: this.handleChange,
+        value: this.state.num1,
         type: "text",
         name: "num1"
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
         onChange: this.handleChange,
+        value: this.state.num2,
         type: "text",
         name: "num2"
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h1", null, this.state.result));
-    }
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
+        onClick: this.doMaths
+      }, "+"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
+        onClick: this.doMaths
+      }, "/"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
+        onClick: this.doMaths
+      }, "*"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
+        onClick: this.doMaths
+      }, "-"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h1", null, this.state.result));
+    } // Handles the change for both input fields, dynamically.
+    // e.target.name referes to the name="num1" attribute from the <input /> tags.
+
   }, {
     key: "handleChange",
     value: function handleChange(e) {
+      // [e.target.name] can be num1 or num2, depending on which input field called this method.
       this.setState(_defineProperty({}, e.target.name, e.target.value));
+    } // This method handles all of the buttons.
+    // It uses eval("1 + 2") to evaluate math from a string.
+
+  }, {
+    key: "doMaths",
+    value: function doMaths(e) {
+      e.preventDefault(); // Leave the function if num1 or num2 are undefined, to avoid errors.
+      // TODO: ensure that they are numbers.
+
+      if (!this.state.num1 || !this.state.num2) return;
+      var operator = e.target.innerText; // This gets the text from the button. EX: +,*,-
+      // This is where a operation string gets constructed to look like: "2 + 4" or "2 / 3"
+
+      var res = eval("".concat(this.state.num1, " ").concat(operator, " ").concat(this.state.num2));
+      this.setState({
+        result: res
+      });
     }
   }]);
 
