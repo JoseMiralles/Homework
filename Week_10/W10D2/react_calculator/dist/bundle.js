@@ -58,6 +58,7 @@ var Calcualtor = /*#__PURE__*/function (_React$Component) {
 
     _this.handleChange = _this.handleChange.bind(_assertThisInitialized(_this));
     _this.doMaths = _this.doMaths.bind(_assertThisInitialized(_this));
+    _this.resetCalc = _this.resetCalc.bind(_assertThisInitialized(_this));
     return _this;
   }
 
@@ -82,7 +83,9 @@ var Calcualtor = /*#__PURE__*/function (_React$Component) {
         onClick: this.doMaths
       }, "*"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
         onClick: this.doMaths
-      }, "-"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h1", null, this.state.result));
+      }, "-"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h1", null, this.state.result), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
+        onClick: this.resetCalc
+      }, "Clear / Reset"));
     } // Handles the change for both input fields, dynamically.
     // e.target.name referes to the name="num1" attribute from the <input /> tags.
 
@@ -107,6 +110,15 @@ var Calcualtor = /*#__PURE__*/function (_React$Component) {
       var res = eval("".concat(this.state.num1, " ").concat(operator, " ").concat(this.state.num2));
       this.setState({
         result: res
+      });
+    }
+  }, {
+    key: "resetCalc",
+    value: function resetCalc(e) {
+      this.setState({
+        num1: "",
+        num2: "",
+        result: 0
       });
     }
   }]);

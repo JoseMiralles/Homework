@@ -13,6 +13,7 @@ export default class Calcualtor extends React.Component{
         // bind functions
         this.handleChange = this.handleChange.bind(this);
         this.doMaths = this.doMaths.bind(this);
+        this.resetCalc = this.resetCalc.bind(this);
     }
 
     render(){
@@ -28,6 +29,8 @@ export default class Calcualtor extends React.Component{
                 <button onClick={this.doMaths}>-</button>
                 <br/><br/>
                 <h1>{ this.state.result }</h1>
+                <br/>
+                <button onClick={this.resetCalc}>Clear / Reset</button>
             </div>
         );
     }
@@ -52,5 +55,13 @@ export default class Calcualtor extends React.Component{
             `${this.state.num1} ${operator} ${this.state.num2}`
         );
         this.setState({result: res});
+    }
+
+    resetCalc(e){
+        this.setState({
+            num1: "",
+            num2: "",
+            result: 0
+        });
     }
 }
