@@ -20,9 +20,9 @@ export default class Calcualtor extends React.Component{
         const { handleChange, state, doMaths, resetCalc } = this;
         return(
             <div>
-                <input onChange={handleChange} value={state.num1} type="text" name="num1"/>
+                <input onChange={handleChange} value={state.num1} type="number" name="num1"/>
                 <br/><br/>
-                <input onChange={handleChange} value={state.num2} type="text" name="num2"/>
+                <input onChange={handleChange} value={state.num2} type="number" name="num2"/>
                 <br/><br/>
                 <button onClick={doMaths}>+</button>
                 <button onClick={doMaths}>/</button>
