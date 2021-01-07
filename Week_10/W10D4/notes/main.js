@@ -30,4 +30,4 @@ const switchSong = (newSong) => ({
     newSong
 });
 
-const newSong = currentlyPlayingReducer(songState, switchSong("Despacito"));
+store.dispatch(switchSong("Despacito."));
