@@ -1,0 +1,6 @@
+
+state = {
+  giphys: [
+    //giphy objects  
+  ]
+}
