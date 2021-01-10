@@ -112,6 +112,7 @@ var receiveSearchGiphys = function receiveSearchGiphys(giphys) {
 var fetchSearchGiphys = function fetchSearchGiphys(searchTerm) {
   return function (dispatch) {
     _util_api_util__WEBPACK_IMPORTED_MODULE_0__["fetchSearchGiphys"](searchTerm).then(function (giphys) {
+      debugger;
       var urls = giphys.data.map(function (g) {
         return g.url;
       });

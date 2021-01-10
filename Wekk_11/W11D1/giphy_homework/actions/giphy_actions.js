@@ -14,6 +14,7 @@ export const fetchSearchGiphys = ( searchTerm ) => {
     return ( dispatch ) => {
         APIUtil.fetchSearchGiphys( searchTerm )
             .then( giphys => {
+                debugger
                 const urls = giphys.data.map( g => g.url );
                 dispatch(receiveSearchGiphys( urls ))
             });
